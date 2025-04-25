@@ -1,11 +1,21 @@
 import React from "react";
+import {
+  createRoutesFromElements,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path="/" element={<Home />}></Route>
+    </Route>
+  )
+);
 const App = () => {
-  return (
-    <div className="bg-black text-2xl text-white text-center">
-      This is my first project set up in react
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

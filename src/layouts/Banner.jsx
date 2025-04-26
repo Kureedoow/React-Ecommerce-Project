@@ -1,23 +1,24 @@
 import React from "react";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
-import BannerImage from "../../public/slider1.png";
+//mport BannerImage from "../../public/slider1.png";
 import { MdLocalShipping } from "react-icons/md";
-import AddImage1 from "../../public/Adv.jpg";
-import AddImage2 from "../../public/Ad_2.jpg";
-import AddImage3 from "../../public/Ad_3.jpg";
-import AddImage4 from "../../public/image1.png";
-import AddImage5 from "../../public/image2.jpg";
-import AddImage6 from "../../public/image3.png";
-import AddImage7 from "../../public/image4.png";
-import AddImage8 from "../../public/image5.png";
-import AddImage9 from "../../public/image6.png";
-import AddImage10 from "../../public/image7.png";
-import AddImage11 from "../../public/image8.png";
-import AddImage12 from "../../public/image9.png";
-import AddImage13 from "../../public/image10.png";
-import AddImage14 from "../../public/image11.png";
-import AddImage15 from "../../public/image12.png";
+//import AddImage1 from "../../public/Adv.jpg";
+//import AddImage2 from "../../public/Ad_2.jpg";
+//import AddImage3 from "../../public/Ad_3.jpg";
+
+//import AddImage4 from "../../public/image1.png";
+// import AddImage5 from "../../public/image2.jpg";
+// import AddImage6 from "../../public/image3.png";
+// import AddImage7 from "../../public/image4.png";
+// import AddImage8 from "../../public/image5.png";
+// import AddImage9 from "../../public/image6.png";
+// import AddImage10 from "../../public/image7.png";
+// import AddImage11 from "../../public/image8.png";
+// import AddImage12 from "../../public/image9.png";
+// import AddImage13 from "../../public/image10.png";
+// import AddImage14 from "../../public/image11.png";
+// import AddImage15 from "../../public/image12.png";
 
 const Banner = () => {
   return (
@@ -45,7 +46,7 @@ const Banner = () => {
             <div className="w-3/5 relative">
               <img
                 className=" -w-[400px] absolute right-[120px] -top-[20px] "
-                src={BannerImage}
+                src="public/slider1.png"
                 alt=""
               />
             </div>
@@ -76,12 +77,12 @@ const Banner = () => {
         <Container>
           <Flex className="gap-24">
             <div className="pt-16">
-              <img src={AddImage1} alt="" />
+              <img src="public/Adv.jpg" alt="" />
             </div>
             <div className="pt-16">
-              <img src={AddImage2} alt="" />
+              <img src="public/Ad_2.jpg" alt="" />
               <div className="pt-16">
-                <img src={AddImage3} alt="" />
+                <img src="public/Ad_3.jpg" alt="" />
               </div>
             </div>
           </Flex>
@@ -96,7 +97,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage4}
+                src="/public/image1.png"
                 alt=""
               />
               <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-442 right-393">
@@ -115,7 +116,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage5}
+                src="/public/image2.jpg"
                 alt=""
               />
               <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-458 right-301">
@@ -134,7 +135,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage6}
+                src="/public/image3.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-458 right-210">
@@ -153,7 +154,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage7}
+                src="/public/image4.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-458 right-118">
@@ -181,7 +182,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage7}
+                src="/public/image4.png"
                 alt=""
               />
               <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-633 right-392">
@@ -200,7 +201,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage8}
+                src="/public/image5.png"
                 alt=""
               />
               <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-649 right-301">
@@ -219,7 +220,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage9}
+                src="/public/image6.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-648 right-209">
@@ -238,7 +239,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage10}
+                src="/public/image7.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-648 right-118">
@@ -260,7 +261,7 @@ const Banner = () => {
         <Container>
           <Flex>
             <div className="w-2/7">
-              <img src={AddImage11} alt="" className="rounded" />
+              <img src="/public/image8.png" alt="" className="rounded" />
             </div>
             <div className="w-4/7 ml-24">
               <h1 className="text-6xl text-dm font-bold">Phone of the year</h1>
@@ -284,7 +285,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage12}
+                src="/public/image9.png"
                 alt=""
               />
               <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-936 right-393">
@@ -303,7 +304,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage13}
+                src="/public/image10.png"
                 alt=""
               />
               <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-952 right-300">
@@ -322,7 +323,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage14}
+                src="/public/image11.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-952 right-209">
@@ -341,7 +342,7 @@ const Banner = () => {
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
-                src={AddImage15}
+                src="/public/image12.png"
                 alt=""
               />
               <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-952 right-118">

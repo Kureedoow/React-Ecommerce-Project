@@ -10,7 +10,7 @@ const Nerbar = () => {
       <Container>
         <Flex>
           <div className="w-4/12">
-            <Image src={imagelogo} />
+            <Image src="/public/logo.png" />
           </div>
           <div className="w-8/12">
             <ul className="flex gap-x-20">

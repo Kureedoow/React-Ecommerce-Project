@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
-//mport BannerImage from "../../public/slider1.png";
+import BannerImage from "../../public/slider1.png";
 import { MdLocalShipping } from "react-icons/md";
 //import AddImage1 from "../../public/Adv.jpg";
 //import AddImage2 from "../../public/Ad_2.jpg";
@@ -46,7 +46,7 @@ const Banner = () => {
             <div className="w-3/5 relative">
               <img
                 className=" -w-[400px] absolute right-[120px] -top-[20px] "
-                src="public/slider1.png"
+                src={BannerImage}
                 alt=""
               />
             </div>

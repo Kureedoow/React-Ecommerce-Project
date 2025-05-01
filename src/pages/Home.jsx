@@ -3,6 +3,7 @@ import Nerbar from "../layouts/Nerbar";
 import Sidebar from "../layouts/Sidebar";
 import Banner from "../layouts/Banner";
 import Footer from "../layouts/Footer";
+import Products from "./Products";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Sidebar />
       <Banner />
       <Footer />
+      <Products />
     </div>
   );
 };

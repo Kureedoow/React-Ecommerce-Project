@@ -12,6 +12,8 @@ import SignUp from "./layouts/SignUp";
 import Login from "./layouts/Login";
 import ContactForm from "./layouts/ContactForm";
 
+import Cart from "./pages/Cart";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -21,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="signup" element={<SignUp />}></Route>
       <Route path="login" element={<Login />}></Route>
       <Route path="contact" element={<ContactForm />}></Route>
+      <Route path="cart" element={<Cart />}></Route>
     </Route>
   )
 );

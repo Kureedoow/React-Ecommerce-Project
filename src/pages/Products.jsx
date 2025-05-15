@@ -9,6 +9,7 @@ import Flex from "../components/Flex";
 import Sidebar from "../layouts/Sidebar";
 import { IoMdStarOutline } from "react-icons/io";
 import Footer from "../layouts/Footer";
+import { NavLink } from "react-router-dom";
 const Products = () => {
   return (
     <>
@@ -113,9 +114,11 @@ const Products = () => {
             <button className="bg-gray-300 py-6 px-16 text-2xl border rounded font-bold">
               Add to Wish List
             </button>
-            <button className="bg-black py-6 px-18 text-2xl border rounded text-white font-bold">
-              Add to Cart
-            </button>
+            <NavLink to="/cart">
+              <button className="bg-black py-6 px-18 text-2xl border rounded text-white font-bold">
+                Add to Cart
+              </button>
+            </NavLink>
           </div>
           <hr className=" w-[800px] text-[#F0F0F0]" />
 

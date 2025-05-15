@@ -11,7 +11,9 @@ const Nerbar = () => {
       <Container>
         <Flex>
           <div className="w-3/12">
-            <Image src={imagelogo} />
+            <NavLink to="/">
+              <Image src={imagelogo} />
+            </NavLink>
           </div>
           <div className="w-8/12">
             <ul className="flex gap-x-20">

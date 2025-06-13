@@ -10,7 +10,9 @@ import Sidebar from "../layouts/Sidebar";
 import { IoMdStarOutline } from "react-icons/io";
 import Footer from "../layouts/Footer";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Products = () => {
+  let data = useSelector((state)=> state.BreadCrump.prevvalue);
   return (
     <>
       <div>
@@ -19,6 +21,9 @@ const Products = () => {
       </div>
       <section className="pt-24">
         <Container>
+
+         <h1 className="text-5xl font-dm font-bold hover:text-gray-500 pt-24">Product</h1>
+    <h2 className="text-[#767676] text-xl hover:text-black hover:font-semibold"><NavLink to={data=="Home" ? "/" : `/${data}`}>{data}</NavLink> >  Products </h2>
           <Flex className="gap-16">
             <div className="w-3/5">
               <img src={product1} alt="" />

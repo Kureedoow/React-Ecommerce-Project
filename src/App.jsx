@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -11,8 +12,8 @@ import Products from "./pages/Products";
 import SignUp from "./layouts/SignUp";
 import Login from "./layouts/Login";
 import ContactForm from "./layouts/ContactForm";
-
 import Cart from "./pages/Cart";
+import Shop from "./layouts/Shop";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />}></Route>
       <Route path="contact" element={<ContactForm />}></Route>
       <Route path="cart" element={<Cart />}></Route>
+      <Route path="shop" element={<Shop />}></Route>
     </Route>
   )
 );

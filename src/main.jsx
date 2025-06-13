@@ -4,8 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+import Store from "./Store.js";
+import { Provider } from "react-redux";
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+  
+  <Provider store={Store}>
+ <App/>
+  </Provider>
 );

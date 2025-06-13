@@ -19,11 +19,27 @@ import { MdLocalShipping } from "react-icons/md";
 // import AddImage13 from "../../public/image10.png";
 // import AddImage14 from "../../public/image11.png";
 // import AddImage15 from "../../public/image12.png";
+import "slick-carousel/slick/slick.css";
+import Slider from "react-slick";
+import NextArrow from "../components/NextArrow";
+import PrevArrow from "../components/PrevArrow";
+
+
 
 const Banner = () => {
+  var settings = {
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow:<NextArrow/>,
+    prevArrow:<PrevArrow/>
+    
+  };
   return (
     <>
-      <section className="bg-[#F0FFF0] py-24">
+      {/* <section className="bg-[#F0FFF0] py-24">
         <Container>
           <Flex>
             <div className=" w-2/5 relative">
@@ -51,8 +67,10 @@ const Banner = () => {
               />
             </div>
           </Flex>
+
         </Container>
-      </section>
+
+      </section> */}
 
       {/* Another Section definedn here */}
       <section className="p-8 bg-gray-300">
@@ -73,6 +91,7 @@ const Banner = () => {
           </Flex>
         </Container>
       </section>
+      {/*Another new section */}
       <section className="py-20">
         <Container>
           <Flex className="gap-24">
@@ -89,18 +108,27 @@ const Banner = () => {
         </Container>
       </section>
       {/* shoping tools section  */}
+
+       
       <section className="bg-[#F0FFF0] py-24">
         <Container>
-          {/* card-1 */}
           <h1 className="text-4xl font-bold text-dm pb-8">New Arrivals</h1>
-          <Flex className="gap-16">
-            <div className="w-1/5 w-[370px] h-[500px]">
+
+          <Slider {...settings}>
+            {/* <Flex className="gap-16"></Flex> */}
+      <div>
+         
+         {/* card-1 */}
+        <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
                 src="/public/image1.png"
                 alt=""
               />
-              <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-442 right-393">
+              <button
+                className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-482 right-462
+              "
+              >
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -111,7 +139,9 @@ const Banner = () => {
               </div>
               <p className="font-dm font-medium">Black</p>
             </div>
-            {/* card-2 */}
+      </div>
+      <div>
+      {/* card-2 */}
 
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
@@ -119,7 +149,9 @@ const Banner = () => {
                 src="/public/image2.jpg"
                 alt=""
               />
-              <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-458 right-301">
+              <button
+                className="bg-black py-2 px-6 text-white font-dm rounded absolute top-498 right-357"
+              >
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -131,14 +163,19 @@ const Banner = () => {
               <p className="font-dm font-medium">Black</p>
             </div>
 
-            {/* card-3 */}
+      </div>
+      <div>
+        {/* card-3 */}
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
                 src="/public/image3.png"
                 alt=""
               />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-458 right-210">
+              <button
+                className="bg-black text-white py-2 px-6 rounded font-dm absolute top-497 right-255
+              "
+              >
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -149,15 +186,16 @@ const Banner = () => {
               </div>
               <p className="font-dm font-medium">Black</p>
             </div>
-
-            {/* card-4 */}
+      </div>
+      <div>
+       {/* card-4 */}
             <div className="w-1/5 w-[370px] h-[500px]">
               <img
                 className="relative animate-pulse rounded"
                 src="/public/image4.png"
                 alt=""
               />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-458 right-118">
+              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-497 right-150">
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -168,10 +206,14 @@ const Banner = () => {
               </div>
               <p className="font-dm font-medium">Black</p>
             </div>
-          </Flex>
+      </div>
+        
+          
+    </Slider>
+          
         </Container>
       </section>
-
+      {/* Another new section */}
       <section className="bg-lightgray py-24">
         <Container>
           {/* card-1 */}
@@ -185,7 +227,7 @@ const Banner = () => {
                 src="/public/image4.png"
                 alt=""
               />
-              <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-633 right-392">
+              <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-488 right-461">
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -204,7 +246,7 @@ const Banner = () => {
                 src="/public/image5.png"
                 alt=""
               />
-              <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-649 right-301">
+              <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-504 right-359">
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -223,7 +265,7 @@ const Banner = () => {
                 src="/public/image6.png"
                 alt=""
               />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-648 right-209">
+              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-504 right-263">
                 New
               </button>
               <div className="flex justify-between pt-2">
@@ -242,7 +284,7 @@ const Banner = () => {
                 src="/public/image7.png"
                 alt=""
               />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-648 right-118">
+              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-504 right-162">
                 New
               </button>
               <div className="flex justify-between pt-2">

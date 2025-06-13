@@ -88,7 +88,7 @@ const SingUp = () => {
               className="w-[900px] py-4 rounded outline-none"
             />
             <hr className=" w-[500px] text-[#F0F0F0]" />
-            <div class="">
+            <div className="">
               <p className="font-bold text-xl">Select you country</p>
 
               <select

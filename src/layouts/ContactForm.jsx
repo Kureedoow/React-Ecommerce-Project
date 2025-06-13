@@ -2,10 +2,13 @@ import React from "react";
 import Nerbar from "./Nerbar";
 import Sidebar from "./Sidebar";
 import Container from "../components/Container";
-import { PiGreaterThanFill } from "react-icons/pi";
+
 import Footer from "./Footer";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const ContactForm = () => {
+  let data = useSelector((state)=> state.BreadCrump.prevvalue);
+  // let data2 = useSelector((state)=>(state.BreadCrump.workingvalue));
   return (
     <section>
       <div>
@@ -13,22 +16,11 @@ const ContactForm = () => {
         <Sidebar />
       </div>
       <Container>
-        <h1 className="text-6xl font-dm font-bold hover:text-gray-500 pt-24">
+        <h1 className="text-5xl font-dm font-bold hover:text-gray-500 pt-24">
           Contact
         </h1>
-        <div className="flex items-center gap-4 pt-4">
-          <NavLink
-            to="/"
-            className="list-none text-[#767676] text-xl hover:text-black hover:font-semibold"
-          >
-            <li>Home</li>
-          </NavLink>
-
-          <PiGreaterThanFill />
-          <h2 className="text-[#767676] text-xl hover:text-black hover:font-semibold">
-            Contacts
-          </h2>
-        </div>
+<h2 className="text-[#767676] text-xl hover:text-black hover:font-semibold"><NavLink to={data=="Home" ? "/" : `/${data}`}>{data}</NavLink> > Contacts </h2>
+      
         <div>
           <h1 className="text-6xl font-dm font-bold hover:text-gray-500 pt-24">
             Fill up this form
@@ -57,7 +49,7 @@ const ContactForm = () => {
         </div>
 
         <div className="mb-8">
-          <p className="font-bold text-xl pt-8">Yomessage</p>
+          <p className="font-bold text-xl pt-8">message</p>
           <textarea
             name="message"
             id="messsage"

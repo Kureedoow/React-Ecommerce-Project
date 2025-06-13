@@ -5,11 +5,13 @@ import Banner from "../layouts/Banner";
 import Footer from "../layouts/Footer";
 import Products from "./Products";
 import SingUp from "../layouts/SignUp";
+import BannerPage from "../layouts/BannerPage";
 const Home = () => {
   return (
     <div>
       <Nerbar />
       <Sidebar />
+      <BannerPage/>
       <Banner />
       <Footer />
       <Products />

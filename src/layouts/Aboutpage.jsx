@@ -4,22 +4,22 @@ import { PiGreaterThanFill } from "react-icons/pi";
 import brandimg1 from "../../public/brand1.png";
 import brandimg2 from "../../public/brand2.png";
 import Flex from "../components/Flex";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 const Aboutpage = () => {
+let dispatch = useDispatch();
+let data = useSelector((state)=> state.BreadCrump.prevvalue);
+ 
+let handleIncrement = () =>{
+dispatch(increment(10));
+}
   return (
+
     <section className="py-8">
-      <Container>
-        <h1 className="text-6xl font-dm font-bold hover:text-gray-500">
-          About
-        </h1>
-        <div className="flex items-center gap-4 pt-4">
-          <h1 className="text-[#767676] text-xl hover:text-black hover:font-semibold">
-            Home
-          </h1>
-          <PiGreaterThanFill />
-          <h2 className="text-[#767676] text-xl hover:text-black hover:font-semibold">
-            About
-          </h2>
-        </div>
+    <Container>
+       <h1 text="Contact" className="text-5xl font-dm font-bold hover:text-gray-500 pt-24"> About</h1>
+   <h2 className="text-[#767676] text-xl hover:text-black hover:font-semibold"><NavLink to={data=="Home" ? "/" : `/${data}`}>{data}</NavLink> > About</h2>
+
         <div className="flex gap-16 pt-24">
           <img src={brandimg1} alt="" />
           <img src={brandimg2} alt="" />
@@ -68,7 +68,8 @@ const Aboutpage = () => {
             </div>
           </Flex>
         </div>
-      </Container>
+     
+    </Container>
     </section>
   );
 };

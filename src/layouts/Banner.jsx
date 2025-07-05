@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
 import BannerImage from "../../public/slider1.png";
@@ -23,10 +23,16 @@ import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
+import axios from "axios";
+import Products from "../pages/Products";
+import { IoIosHeart } from "react-icons/io";
+import { TfiReload } from "react-icons/tfi";
+import { FaShoppingCart } from "react-icons/fa";
 
 
 
 const Banner = () => {
+  let [alldata,setalldata]=useState([]);
   var settings = {
     arrows: true,
     infinite: true,
@@ -37,7 +43,20 @@ const Banner = () => {
     prevArrow:<PrevArrow/>
     
   };
-  return (
+
+
+  useEffect(()=>{
+ async function Alldata(){
+  let data=await axios.get("https://dummyjson.com/products")
+  setalldata(data.data.products);
+
+}
+Alldata();
+
+},[])
+console.log(alldata);
+
+return (
     <>
       {/* <section className="bg-[#F0FFF0] py-24">
         <Container>
@@ -113,103 +132,52 @@ const Banner = () => {
       <section className="bg-[#F0FFF0] py-24">
         <Container>
           <h1 className="text-4xl font-bold text-dm pb-8">New Arrivals</h1>
+   <Slider {...settings}>
+  {
+    alldata.map((item, index) => (
+      (index >= 8 && index <= 32) && (
+        <div key={index} className="flex justify-center">
+          <div className="w-[370px] flex flex-col items-center">
+            
+            {/* Product Image + Hover Actions */}
+            <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+              <img className="w-full h-full object-cover rounded" src={item.thumbnail} alt="" />
 
-          <Slider {...settings}>
-            {/* <Flex className="gap-16"></Flex> */}
-      <div>
-         
-         {/* card-1 */}
-        <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image1.png"
-                alt=""
-              />
-              <button
-                className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-482 right-462
-              "
-              >
+              {/* Hover Panel */}
+              <div className="
+                absolute bottom-0 left-0 w-full h-[150px] bg-amber-600 
+                opacity-0 translate-y-full transition-all duration-300 ease-in-out
+                group-hover:opacity-100 group-hover:translate-y-0
+              ">
+                <ul className='flex flex-col items-end px-[20px] py-4 gap-y-4 font-dm font-bold text-sm text-white'>
+                  <li>Add to watch list <IoIosHeart className='inline ml-4' /></li>
+                  <li>Compare <TfiReload className='inline ml-6' /></li>
+                  <li>Add to cart <FaShoppingCart className='inline ml-4' /></li>
+                </ul>
+              </div>
+
+              {/* "New" Button */}
+              <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
                 New
               </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
-      </div>
-      <div>
-      {/* card-2 */}
-
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image2.jpg"
-                alt=""
-              />
-              <button
-                className="bg-black py-2 px-6 text-white font-dm rounded absolute top-498 right-357"
-              >
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
             </div>
 
-      </div>
-      <div>
-        {/* card-3 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image3.png"
-                alt=""
-              />
-              <button
-                className="bg-black text-white py-2 px-6 rounded font-dm absolute top-497 right-255
-              "
-              >
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
+            {/* Product Info BELOW the image */}
+            <div className="mt-4 w-full px-1">
+              <div className="flex justify-between items-center">
+                <h1 className="text-xl font-dm font-bold">{item.title}</h1>
+                <p className="text-lg font-semibold">${item.price}</p>
               </div>
-              <p className="font-dm font-medium">Black</p>
+              <p className="font-dm font-medium text-gray-700">Black</p>
             </div>
-      </div>
-      <div>
-       {/* card-4 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image4.png"
-                alt=""
-              />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-497 right-150">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
-      </div>
-        
-          
-    </Slider>
+          </div>
+        </div>
+      )
+    ))
+  }
+</Slider>
+
+
           
         </Container>
       </section>
@@ -217,84 +185,190 @@ const Banner = () => {
       <section className="bg-lightgray py-24">
         <Container>
           {/* card-1 */}
-          <h1 className="text-4xl font-bold text-dm pb-8">
+          <h1 className="text-4xl font-bold text-dm pb-8 mb-">
             New Our Bestsellers
           </h1>
           <Flex className="gap-16">
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image4.png"
-                alt=""
-              />
-              <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-488 right-461">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+            {/* card-1 */}
+
+<Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image4.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
+
+
+
             {/* card-2 */}
 
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image5.png"
-                alt=""
-              />
-              <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-504 right-359">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+<Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image5.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
+
 
             {/* card-3 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image6.png"
-                alt=""
-              />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-504 right-263">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+            <Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image5.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
 
             {/* card-4 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image7.png"
-                alt=""
-              />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-504 right-162">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+           <Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image5.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
           </Flex>
         </Container>
       </section>
@@ -324,80 +398,179 @@ const Banner = () => {
           {/* card-1 */}
           <h1 className="text-4xl font-bold text-dm pb-8">Special Offers</h1>
           <Flex className="gap-16">
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image9.png"
-                alt=""
-              />
-              <button className="bg-black text-white  font-dm py-2 px-6 mt-16 rounded absolute top-936 right-393">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
-            {/* card-2 */}
+            <Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image9.png"  // ✅ Corrected path
+        alt="Product"
+      />
 
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image10.png"
-                alt=""
-              />
-              <button className="bg-black py-2 px-6 text-white font-dm rounded absolute top-952 right-300">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
+            {/* card-2 */}
+<Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image10.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
 
             {/* card-3 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image11.png"
-                alt=""
-              />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-952 right-209">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+            <Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image11.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
 
             {/* card-4 */}
-            <div className="w-1/5 w-[370px] h-[500px]">
-              <img
-                className="relative animate-pulse rounded"
-                src="/public/image12.png"
-                alt=""
-              />
-              <button className="bg-black text-white py-2 px-6 rounded font-dm absolute top-952 right-118">
-                New
-              </button>
-              <div className="flex justify-between pt-2">
-                <h1 className="text-xl font-dm font-bold">
-                  Basic Crew Neck Tee
-                </h1>
-                <p>$44.00</p>
-              </div>
-              <p className="font-dm font-medium">Black</p>
-            </div>
+            <Flex className="gap-16">
+  <div className="w-[370px] h-auto flex flex-col items-center">
+    
+    {/* Image + Hover Actions */}
+    <div className="relative group overflow-hidden bg-white shadow rounded h-[400px] w-full">
+      <img
+        className="w-full h-full object-cover rounded"
+        src="Image12.png"  // ✅ Corrected path
+        alt="Product"
+      />
+
+      {/* Hover Action Panel */}
+      <div className="
+        absolute bottom-0 left-0 w-full h-[150px] bg-amber-600
+        opacity-0 translate-y-full transition-all duration-300 ease-in-out
+        group-hover:opacity-100 group-hover:translate-y-0
+      ">
+        <ul className="flex flex-col items-end px-5 py-4 gap-y-4 font-dm font-bold text-sm text-white">
+          <li>Add to watch list <IoIosHeart className="inline ml-4" /></li>
+          <li>Compare <TfiReload className="inline ml-6" /></li>
+          <li>Add to cart <FaShoppingCart className="inline ml-4" /></li>
+        </ul>
+      </div>
+
+      {/* "New" Button */}
+      <button className="bg-black text-white font-dm py-2 px-6 rounded absolute top-4 left-4 z-10">
+        New
+      </button>
+    </div>
+
+    {/* Product Info */}
+    <div className="mt-4 w-full px-1">
+      <div className="flex justify-between">
+        <h1 className="text-xl font-dm font-bold">
+          Basic Crew Neck Tee
+        </h1>
+        <p>$44.00</p>
+      </div>
+      <p className="font-dm font-medium text-gray-700">Black</p>
+    </div>
+  </div>
+</Flex>
           </Flex>
         </Container>
       </section>
